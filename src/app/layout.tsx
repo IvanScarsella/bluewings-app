@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar";
 
 const quicksand = Quicksand({
-  variable: "--font-geist-sans",
+  variable: "--font-quicksand",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,6 +25,7 @@ export default function RootLayout({
       <body
         className={`${quicksand.variable} antialiased`}
       >
+        <Navbar />
         {children}
       </body>
     </html>
