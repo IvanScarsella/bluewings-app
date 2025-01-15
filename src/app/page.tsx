@@ -14,6 +14,8 @@ import image09 from "../../public/image09.jpeg"
 import image10 from "../../public/image10.jpeg"
 import image11 from "../../public/image11.jpeg"
 import image12 from "../../public/image12.jpeg"
+import Setlist from "./components/Setlist";
+import Contact from "./components/Contact";
 
 export default function Home() {
 
@@ -67,6 +69,9 @@ export default function Home() {
         {images.map((image, index) => (
           <Image src={image} alt={'image' + index} key={index} className="size-32" />
         ))}</div>
+      <Setlist />
+      <Image src={image02} alt="main image" className="w-full px-20 mt-20" />
+      <Contact />
     </main>
   );
 }
