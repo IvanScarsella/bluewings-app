@@ -11,7 +11,7 @@ export default function Navbar() {
 
    return (
       <div className="bg-[#002a43] text-white flex flex-row justify-between px-16 fixed top-0 left-0 right-0 mx-auto w-[1440] opacity-80">
-         <Image src={logo} alt="band logo" className="w-48 hover:scale-110" />
+         <Image src={logo} alt="band logo" className="w-48 " />
          <div className="flex flex-row items-center">
 
             {itemsNav.map((item) => (

@@ -37,11 +37,11 @@ export default function Contact() {
    };
 
    return (
-      <div className="mx-auto p-6 rounded-md shadow-md flex flex-row w-full justify-around">
+      <div className="mx-auto p-6 rounded-md shadow-md flex flex-row w-full justify-around mt-20">
          <div>
 
             <h1 className="text-4xl font-bold mb-6 ">Contáctanos</h1>
-            <p className="w-2/3">Por contrataciones, completa el formulario y un representante se estará contactando a la brevedad.</p>
+            <p className="w-2/3">Por contrataciones, completa el formulario y un representante se estará contactando con vos a la brevedad.</p>
          </div>
          <form onSubmit={handleSubmit} className="space-y-6 
          ">
