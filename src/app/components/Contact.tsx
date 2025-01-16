@@ -6,7 +6,7 @@ export default function Contact() {
    const [email, setEmail] = useState("");
    const [message, setMessage] = useState("");
    const [status, setStatus] = useState("");
-   const [isError, setIsError] = useState(false); // Nuevo estado para manejar errores
+   const [isError, setIsError] = useState(false);
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -37,42 +37,47 @@ export default function Contact() {
    };
 
    return (
-      <div className="mx-auto p-6 rounded-md shadow-md flex flex-row w-full justify-around mt-20">
-         <div>
-
-            <h1 className="text-4xl font-bold mb-6 ">Contáctanos</h1>
-            <p className="w-2/3">Por contrataciones, completa el formulario y un representante se estará contactando con vos a la brevedad.</p>
+      <div className="max-w-4xl mx-auto mt-20 p-6 bg-gray-800 text-white rounded-md shadow-lg">
+         <div className="text-center md:text-left">
+            <h1 className="text-4xl font-bold mb-4">Contáctanos</h1>
+            <p className="text-lg mb-6">
+               Por contrataciones, completa el formulario y un representante se estará contactando contigo a la brevedad.
+            </p>
          </div>
-         <form onSubmit={handleSubmit} className="space-y-6 
-         ">
-            <label className="block">
+         <form
+            onSubmit={handleSubmit}
+            className="space-y-6 flex flex-col items-center md:items-stretch"
+         >
+            <label className="w-full">
                <span className="text-lg font-medium">Correo electrónico:</span>
                <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="mt-1 p-2 w-full border rounded text-black"
+                  aria-label="Correo electrónico"
+                  className="mt-1 p-3 w-full bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                />
             </label>
-            <label className="block">
+            <label className="w-full">
                <span className="text-lg font-medium">Mensaje:</span>
                <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   required
-                  className="mt-1 p-2 w-full border rounded text-black"
+                  aria-label="Mensaje"
+                  className="mt-1 p-3 w-full bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                />
             </label>
             <button
                type="submit"
-               className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+               className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             >
                Enviar
             </button>
             {status && (
                <p
-                  className={`mt-2 text-center text-sm ${isError ? "text-red-500" : "text-green-500"
+                  className={`mt-4 text-center text-sm ${isError ? "text-red-500" : "text-green-500"
                      }`}
                >
                   {status}

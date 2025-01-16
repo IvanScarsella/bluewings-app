@@ -1,17 +1,17 @@
 "use client";
 
-import image01 from "../../public/image01.jpeg"
-import image02 from "../../public/image02.jpeg"
-import image03 from "../../public/image03.jpeg"
-import image04 from "../../public/image04.jpeg"
-import image05 from "../../public/image05.jpeg"
-import image06 from "../../public/image06.jpeg"
-import image07 from "../../public/image07.jpeg"
-import image08 from "../../public/image08.jpeg"
-import image09 from "../../public/image09.jpeg"
-import image10 from "../../public/image10.jpeg"
-import image11 from "../../public/image11.jpeg"
-import image12 from "../../public/image12.jpeg"
+import image01 from "../../public/image01.jpeg";
+import image02 from "../../public/image02.jpeg";
+import image03 from "../../public/image03.jpeg";
+import image04 from "../../public/image04.jpeg";
+import image05 from "../../public/image05.jpeg";
+import image06 from "../../public/image06.jpeg";
+import image07 from "../../public/image07.jpeg";
+import image08 from "../../public/image08.jpeg";
+import image09 from "../../public/image09.jpeg";
+import image10 from "../../public/image10.jpeg";
+import image11 from "../../public/image11.jpeg";
+import image12 from "../../public/image12.jpeg";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import mainImage from "../../public/mainImage.jpeg";
@@ -27,26 +27,23 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   const musicians = [
-    { name: "Eliana Furiasse", instrument: "vocals", image: imageEliana, description: "Eliana description." },
-    { name: "Gabriel Rojas", instrument: "guitar", image: imageGabriel, description: "Gabriel description." },
-    { name: "Genaro Russo", instrument: "bass guitar", image: imageGenaro, description: "Genaro description." },
-    { name: "Nicolás Rodríguez", instrument: "vocals", image: imageNicolas, description: "Nicolás description." },
-    { name: "Santiago Costas", instrument: "guitar", image: imageSantiago, description: "Santiago description." },
-    { name: "Iván Scarsella", instrument: "drums", image: imageIvan, description: "Iván description." },
+    { name: "Eliana Furiasse", instrument: "Vocals", image: imageEliana, description: "Lead vocalist with an electrifying presence." },
+    { name: "Gabriel Rojas", instrument: "Guitar", image: imageGabriel, description: "Master of riffs and soulful solos." },
+    { name: "Genaro Russo", instrument: "Bass Guitar", image: imageGenaro, description: "The groove master with unmatched rhythm." },
+    { name: "Nicolás Rodríguez", instrument: "Vocals", image: imageNicolas, description: "Powerful voice with a captivating range." },
+    { name: "Santiago Costas", instrument: "Guitar", image: imageSantiago, description: "A wizard of intricate melodies." },
+    { name: "Iván Scarsella", instrument: "Drums", image: imageIvan, description: "Dynamic beats driving the soul of the band." },
   ];
 
   const [currentMusicianIndex, setCurrentMusicianIndex] = useState(0);
 
-  // Función para avanzar al siguiente músico automáticamente
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMusicianIndex((prevIndex) => (prevIndex + 1) % musicians.length);
     }, 5000);
-
-    return () => clearInterval(interval); // Limpieza del intervalo al desmontar
+    return () => clearInterval(interval);
   }, [musicians.length]);
 
-  // Manejar selección manual al hacer clic
   const handleMusicianClick = (index: number) => {
     setCurrentMusicianIndex(index);
   };
@@ -64,54 +61,72 @@ export default function Home() {
     image10,
     image11,
     image12,
-  ]
+  ];
 
   return (
-    <main className="w-full h-screen max-w-[1440px] mx-auto bg-white text-white">
-      <Image src={mainImage} alt="Main Image" className="w-full top-0" />
-      <div className="relative -top-96 flex flex-col items-center mx-auto">
-        <p className="text-8xl">Blue Wings</p>
-        <p className="text-2xl">Experience it live, get your tickets now!</p>
+    <main className="w-full max-w-screen-2xl mx-auto bg-gradient-to-b from-black to-gray-900 text-white">
+      <Image
+        src={mainImage}
+        alt="Main Image"
+        className="w-full object-cover h-[70vh] brightness-75"
+      />
+      <div className="absolute top-[40%] w-full text-center text-white px-4">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-wide">Blue Wings</h1>
+        <p className="text-xl md:text-2xl mt-4">Experience it live, get your tickets now!</p>
       </div>
 
-      <div className="flex flex-row justify-between mt-20">
-        <p className="w-2/5 text-4xl">About Band</p>
-        <p className="w-3/5 text-xl">
-          AC/DC es una banda de hard rock británica-australiana, formada en 1973 en Australia por los hermanos escoceses
-          Malcolm Young y Angus Young y Dave Evans como vocalista. Sus álbumes se han vendido en un total estimado de
-          200 millones de copias, embarcándose en giras multitudinarias por todo el mundo y sus éxitos han musicalizado
-          varias producciones cinematográficas sobresalientes. Son famosas sus actuaciones en vivo, resultando
-          vibrantes y exultantes espectáculos de primer orden.
-        </p>
-      </div>
+      <section className="mt-10 px-6 md:px-16">
+        <div className="flex flex-col xl:flex-row justify-between items-start">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4 xl:mb-0 xl:w-full">About the Band</h2>
+          <p className="text-lg md:text-xl text-gray-300">
+            Blue Wings is more than a band; it’s an experience. With electrifying performances, they’ve captured hearts
+            worldwide. Their music transcends boundaries, bringing fans together with melodies that resonate deeply.
+          </p>
+        </div>
+      </section>
 
-      <p className="text-6xl mb-6 mt-20">Band Members</p>
+      <section className="mt-16 px-6 md:px-16">
+        <h2 className="text-4xl font-semibold text-center mb-8">Band Members</h2>
+        <div className="flex flex-wrap justify-center gap-8">
+          {musicians.map((musician, index) => (
+            <div
+              key={musician.name}
+              className={`flex flex-col items-center text-center p-4 border rounded-lg shadow-md ${index === currentMusicianIndex
+                ? "bg-blue-800 border-blue-500 text-white"
+                : "bg-gray-800 border-gray-700 text-gray-300 hover:shadow-lg"
+                }`}
+              onClick={() => handleMusicianClick(index)}
+            >
+              <Image
+                src={musician.image}
+                alt={musician.name}
+                className="w-32 h-32 rounded-full object-cover"
+              />
+              <h3 className="mt-4 text-xl font-semibold">{musician.name}</h3>
+              <p className="text-sm uppercase tracking-wide">{musician.instrument}</p>
+            </div>
+          ))}
+        </div>
 
-      <div className="flex flex-row space-x-6">
-        {musicians.map((musician, index) => (
-          <div
-            key={musician.name}
-            className={`flex flex-col w-72 cursor-pointer border-8 rounded ${index === currentMusicianIndex ? " border-[#002a43] bg-[#002a43] text-white" : "border-2 border-transparent text-zinc-100"
-              }`}
-            onClick={() => handleMusicianClick(index)}
-          >
-            <Image src={musician.image} alt={musician.name} className="size-64" />
-            <p className="text-xl">{musician.name}</p>
-            <p className="">{musician.instrument}</p>
-          </div>
-        ))}
-      </div>
+        <div className="mt-8 p-6 bg-gray-700 rounded-lg">
+          <h3 className="text-2xl font-bold">{musicians[currentMusicianIndex].name}</h3>
+          <p className="mt-2">{musicians[currentMusicianIndex].description}</p>
+        </div>
+      </section>
 
-      {/* Mostrar descripción del músico seleccionado */}
-      <div className="mt-6 p-4 bg-gray-800 text-white rounded-md">
-        <h2 className="text-2xl font-bold">{musicians[currentMusicianIndex].name}</h2>
-        <p className="text-xl mt-2">{musicians[currentMusicianIndex].description}</p>
-      </div>
-
-      <div className="grid grid-flow-row grid-cols-6 mt-20">
-        {images.map((image, index) => (
-          <Image src={image} alt={'image' + index} key={index} className="size-32 m-2" />
-        ))}</div>
+      <section className="mt-16 px-6 md:px-16">
+        <h2 className="text-4xl font-semibold text-center mb-8">Gallery</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {images.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt={`Gallery Image ${index + 1}`}
+              className="rounded-lg hover:scale-105 transition-transform duration-200"
+            />
+          ))}
+        </div>
+      </section>
 
       <Setlist />
       <Contact />
